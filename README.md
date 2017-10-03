@@ -4,10 +4,13 @@ This is port of [Pencil theme for ViM](https://github.com/reedes/vim-colors-penc
 
 Currently supports:
 - company-mode
+- flycheck/make
 - rainbow-delimeters
 - powerline
 - spaceline
 - rust-mode
-
-Planned:
-- recolour primary brackets
+- org-mode
+- diff/ediff
+- magit
+- helm/ivy
+- which-key
