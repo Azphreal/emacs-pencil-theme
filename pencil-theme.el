@@ -340,7 +340,7 @@
        ;; Helm
        `(helm-header ((t (:foreground ,fg :background ,bg))))
        `(helm-selection ((t (:background ,bg-very-subtle))))
-       `(helm-match ((t (:foreground ,blue ))))
+       `(helm-match ((t (:foreground ,dark-blue ))))
        `(helm-ff-file ((t (:foreground ,fg ))))
        `(helm-ff-directory ((t (:foreground ,blue ))))
        `(helm-ff-executable ((t (:foreground ,green ))))
@@ -355,8 +355,8 @@
        ;; ivy
        `(ivy-cursor ((t (:foreground ,fg :background ,bg))))
        `(ivy-current-match ((t (:inherit helm-match))))
-       `(ivy-minibuffer-match-face-1 ((t (:foreground ,pink :bg ,bg))))
-       `(ivy-minibuffer-match-face-2 ((t (:foreground ,dark-blue :weight bold))))
+       `(ivy-minibuffer-match-face-1 ((t (:foreground ,dark-blue :bg ,bg))))
+       `(ivy-minibuffer-match-face-2 ((t (:foreground ,pink :weight bold))))
        `(ivy-minibuffer-match-face-3 ((t (:foreground ,red :weight bold))))
        `(ivy-minibuffer-match-face-4 ((t (:foreground ,cyan :weight bold))))
        `(ivy-confirm-face ((t (:foreground ,green :inherit minibuffer-prompt))))
@@ -366,13 +366,13 @@
        ;; guide-key
        `(guide-key/key-face ((t (:foreground ,fg))))
        `(guide-key/highlight-command-face ((t (:foreground ,orange))))
-       `(guide-key/prefix-command-face ((t (:foreground ,blue ))))
+       `(guide-key/prefix-command-face ((t (:foreground ,dark-blue ))))
 
        ;; which-key
-       `(which-key-key-face ((t (:foreground ,fg  :weight bold))))
-       `(which-key-special-key-face ((t (:foreground ,orange  :weight bold :height 1.1))))
+       `(which-key-key-face ((t (:foreground ,fg :weight bold))))
+       `(which-key-special-key-face ((t (:foreground ,orange :weight bold :height 1.1))))
        `(which-key-command-description-face ((t (:foreground ,fg ))))
-       `(which-key-group-description-face ((t (:foreground ,blue ))))
+       `(which-key-group-description-face ((t (:foreground ,dark-blue ))))
        `(which-key-separator-face ((t (:foreground ,comment ))))
 
        ))))
