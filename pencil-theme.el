@@ -111,7 +111,6 @@
        `(mode-line-highlight ((t (:foreground ,fg :background ,green :box nil))))
        `(mode-line-inactive ((t (:foreground ,bg-very-subtle :box nil))))
 
-
        `(region ((t (:background ,bg-region))))
        `(secondary-selection ((t (:background ,bg-region))))
        `(error ((t (:foreground ,red :weight bold))))
@@ -337,6 +336,44 @@
        `(magit-sequence-part ((t (:foreground ,yellow))))
        `(magit-sequence-head ((t (:foreground ,blue))))
        `(magit-sequence-drop ((t (:foreground ,red))))
+
+       ;; Helm
+       `(helm-header ((t (:foreground ,fg :background ,bg))))
+       `(helm-selection ((t (:background ,bg-very-subtle))))
+       `(helm-match ((t (:foreground ,blue ))))
+       `(helm-ff-file ((t (:foreground ,fg ))))
+       `(helm-ff-directory ((t (:foreground ,blue ))))
+       `(helm-ff-executable ((t (:foreground ,green ))))
+       `(helm-buffer-directory ((t (:foreground ,blue))))
+       `(helm-buffer-file ((t (:foreground ,fg))))
+       `(helm-grep-file ((t (:foreground ,blue :underline t))))
+       `(helm-buffer-process ((t (:foreground ,red))))
+       `(helm-buffer-not-saved ((t (:foreground ,orange))))
+       `(helm-candidate-number ((t (:foreground ,bg :background ,blue))))
+       `(helm-source-header ((t (:background ,blue :foreground ,fg-subtle :height 1.3 :bold t))))
+
+       ;; ivy
+       `(ivy-cursor ((t (:foreground ,fg :background ,bg))))
+       `(ivy-current-match ((t (:inherit helm-match))))
+       `(ivy-minibuffer-match-face-1 ((t (:foreground ,pink :bg ,bg))))
+       `(ivy-minibuffer-match-face-2 ((t (:foreground ,dark-blue :weight bold))))
+       `(ivy-minibuffer-match-face-3 ((t (:foreground ,red :weight bold))))
+       `(ivy-minibuffer-match-face-4 ((t (:foreground ,cyan :weight bold))))
+       `(ivy-confirm-face ((t (:foreground ,green :inherit minibuffer-prompt))))
+       `(ivy-match-required-face ((t (:foreground ,pink :inherit minibuffer-prompt))))
+       `(ivy-remove (tt (:foreground ,pink)))
+
+       ;; guide-key
+       `(guide-key/key-face ((t (:foreground ,fg))))
+       `(guide-key/highlight-command-face ((t (:foreground ,orange))))
+       `(guide-key/prefix-command-face ((t (:foreground ,blue ))))
+
+       ;; which-key
+       `(which-key-key-face ((t (:foreground ,fg  :weight bold))))
+       `(which-key-special-key-face ((t (:foreground ,orange  :weight bold :height 1.1))))
+       `(which-key-command-description-face ((t (:foreground ,fg ))))
+       `(which-key-group-description-face ((t (:foreground ,blue ))))
+       `(which-key-separator-face ((t (:foreground ,comment ))))
 
        ))))
 (provide-theme 'pencil)
