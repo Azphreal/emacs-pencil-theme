@@ -101,7 +101,7 @@
 
        ;; linum-mode
        `(linum ((t (:foreground ,bg-subtle :background ,bg))))
-       `(linum-current-line ((t (:foreground ,blue :background ,bg))))
+       `(linum-bg-very-subtle ((t (:foreground ,blue :background ,bg))))
        `(linum-highlight-face ((t (:foreground ,blue :background ,bg))))
 
        ;; Mode line
@@ -238,7 +238,7 @@
        `(org-block-background ((,t (:background ,bg-very-subtle))))
        `(org-code ((t (:foreground ,red :background ,bg))))
        `(org-verbatim ((t (:foreground ,dark-blue :inherit org-code))))
-       ;`(org-column ((t (:background ,current-line))))
+       ;`(org-column ((t (:background ,bg-very-subtle))))
        ;`(org-column-title ((t (:inherit org-column :weight bold :underline t))))
        `(org-date ((t (:foreground ,pink :underline t))))
        `(org-document-info ((t (:foreground ,fg-subtle :height 1.2))))
@@ -272,6 +272,71 @@
        `(org-level-7 ((t (:inherit outline-7 :foreground ,pink))))
        `(org-level-8 ((t (:inherit outline-8))))
        `(org-level-9 ((t (:inherit outline-9))))
+
+       `(diff-hl-insert ((t (:background ,green :foreground ,green))))
+       `(diff-hl-change ((t (:background ,blue :foreground ,blue))))
+       `(diff-hl-delete ((t (:background ,orange :foreground ,orange))))
+
+       `(diff-added ((t (:foreground ,green))))
+       `(diff-changed ((t (:foreground ,blue))))
+       `(diff-removed ((t (:foreground ,orange))))
+       `(diff-header ((t (:foreground ,blue :background nil))))
+       `(diff-hunk-header ((t (:foreground ,purple))))
+       `(diff-refine-added ((t (:inherit diff-added :inverse-video t))))
+       `(diff-refine-removed ((t (:inherit diff-removed :inverse-video t))))
+
+       `(ediff-even-diff-A ((t (:foreground nil :background nil :inverse-video t))))
+       `(ediff-even-diff-B ((t (:foreground nil :background nil :inverse-video t))))
+       `(ediff-odd-diff-A  ((t (:foreground ,comment :background nil :inverse-video t))))
+       `(ediff-odd-diff-B  ((t (:foreground ,comment :background nil :inverse-video t))))
+
+       ;; Magit
+       `(magit-branch ((t (:foreground ,green))))
+       `(magit-diff-added ((t (:inherit diff-added))))
+       `(magit-diff-added-highlight ((t (:inherit magit-diff-added
+                                              :background ,bg-very-subtle))))
+       `(magit-diff-removed ((t (:inherit diff-removed))))
+       `(magit-diff-removed-highlight ((t (:inherit magit-diff-removed
+                                                :background ,bg-very-subtle))))
+       `(magit-header ((t (:inherit nil :weight bold))))
+       `(magit-item-highlight ((t (:inherit highlight :background nil))))
+       `(magit-log-author ((t (:foreground ,blue))))
+       `(magit-log-graph ((t (:foreground ,comment))))
+       `(magit-log-date ((t (:foreground ,yellow))))
+       `(magit-section-title ((t (:foreground ,blue :weight bold))))
+       `(magit-section-highlight           ((t (:background ,bg-very-subtle))))
+       `(magit-section-heading             ((t (:foreground ,yellow :weight bold))))
+       `(magit-diff-file-heading           ((t (:weight bold))))
+       `(magit-diff-file-heading-highlight ((t (:background ,bg-very-subtle  :weight bold))))
+       `(magit-diff-file-heading-selection ((t (:background ,bg
+                                                :foreground ,orange :weight bold))))
+       `(magit-diff-hunk-heading           ((t (:background ,blue))))
+       `(magit-diff-hunk-heading-highlight ((t (:background ,blue))))
+       `(magit-diff-hunk-heading-selection ((t (:background ,bg
+                                                :foreground ,orange))))
+       `(magit-diff-lines-heading          ((t (:background ,orange
+                                                :foreground ,bg))))
+       `(magit-blame-heading          ((t (:background ,bg-very-subtle
+                                                       :foreground ,blue))))
+       `(magit-blame-date             ((t (:background ,bg-very-subtle
+                                                       :foreground ,blue))))
+       `(magit-blame-summary          ((t (:background ,bg-very-subtle
+                                                       :foreground ,green))))
+       `(magit-diff-context-highlight      ((t (:background ,bg-very-subtle
+                                                :foreground ,fg-subtle))))
+       `(magit-diff-context                ((t (:foreground ,fg-subtle))))
+       `(magit-diffstat-added   ((t (:foreground ,green))))
+       `(magit-diffstat-removed ((t (:foreground ,red))))
+       `(magit-process-ok    ((t (:foreground ,green  :weight bold))))
+       `(magit-process-ng    ((t (:foreground ,red    :weight bold))))
+       `(magit-branch-local  ((t (:foreground ,blue   :weight bold))))
+       `(magit-branch-remote ((t (:foreground ,green  :weight bold))))
+       `(magit-tag           ((t (:foreground ,orange :weight bold))))
+       `(magit-hash          ((t (:foreground ,comment))))
+       `(magit-sequence-stop ((t (:foreground ,green))))
+       `(magit-sequence-part ((t (:foreground ,yellow))))
+       `(magit-sequence-head ((t (:foreground ,blue))))
+       `(magit-sequence-drop ((t (:foreground ,red))))
 
        ))))
 (provide-theme 'pencil)
