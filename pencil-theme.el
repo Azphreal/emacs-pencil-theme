@@ -339,7 +339,7 @@
 
          ;; ivy
          `(ivy-cursor ((t (:foreground ,fg :background ,bg))))
-         `(ivy-current-match ((t (:inherit helm-match))))
+         `(ivy-current-match ((t (:foreground ,pink :background ,bg-very-subtle))))
          `(ivy-minibuffer-match-face-1 ((t (:foreground ,dark-blue :bg ,bg))))
          `(ivy-minibuffer-match-face-2 ((t (:foreground ,blue :weight bold))))
          `(ivy-minibuffer-match-face-3 ((t (:foreground ,red :weight bold))))
