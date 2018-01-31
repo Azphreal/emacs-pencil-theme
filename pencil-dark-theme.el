@@ -1,6 +1,6 @@
 ;; pencil-dark.el
 
-(require 'pencil-theme)
+(require 'pencil)
 
 (deftheme pencil-dark)
 
