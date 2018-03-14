@@ -17,15 +17,28 @@
   :type 'boolean
   :group 'pencil)
 
+(defcustom pencil/nebula nil
+  "Enables a bluer background to go with the Ant-Nebula theme"
+  :type 'boolean
+  :group 'pencil)
+
+(defcustom pencil/variable-family "sans-serif"
+  "Alternate typeface to use for strings and documentation.
+If nil, uses the same face as the default."
+  :type 'string
+  :group 'pencil)
+
 (defun pencil-apply-theme (name dark?)
-  (let ((black           "#212121")
+  (let ((black           (if pencil/nebula "#23262E" "#212121"))
         (medium-gray     "#767676")
         (white           "#f1f1f1")
         (actual-white    "#ffffff")
         (light-black     "#424242")
         (lighter-black   "#545454")
 
-        (subtle-black    (if pencil/higher-contrast-ui "#262626" "#303030"))
+        (subtle-black    (cond (pencil/nebula "#282B33")
+                               (pencil/higher-contrast-ui "#262626")
+                               (t "#303030")))
         (light-gray      (if pencil/higher-contrast-ui "#d9d9d9" "#b2b2b2"))
         (lighter-gray    (if pencil/higher-contrast-ui "#e5e6e6" "#c6c6c6"))
 
@@ -71,7 +84,8 @@
            (preproc-face    `((t (:foreground ,red))))
            (type-face       `((t (:foreground ,purple))))
            (special-face    `((t (:foreground ,pink))))
-           (error-face      `((t (:foreground ,red :weight bold)))))
+           (error-face      `((t (:foreground ,red :weight bold))))
+           (text-face       `((t (:family ,pencil/variable-family :inherit font-lock-constant-face)))))
 
         (custom-theme-set-faces
          name
@@ -97,6 +111,7 @@
          `(linum ((t (:foreground ,bg-subtle :background ,bg))))
          `(linum-bg-very-subtle ((t (:foreground ,blue :background ,bg))))
          `(linum-highlight-face ((t (:foreground ,blue :background ,bg))))
+         `(hl-line ((t (:background ,bg-very-subtle))))
 
          ;; Mode line
          `(mode-line ((t (:background ,bg-subtle :box nil))))
@@ -119,15 +134,15 @@
          `(font-lock-comment-delimiter-face    ,comment-face)
          `(font-lock-comment-face              ,comment-face)
          `(font-lock-constant-face             ,constant-face)
-         `(font-lock-doc-face                  ,constant-face)
-         `(font-lock-doc-string-face           ,constant-face)
+         `(font-lock-doc-face                  ,text-face)
+         `(font-lock-doc-string-face           ,text-face)
          `(font-lock-function-name-face        ,identifier-face)
          `(font-lock-keyword-face              ,statement-face)
          `(font-lock-negation-char-face        ,special-face)
          `(font-lock-preprocessor-face         ,preproc-face)
          `(font-lock-regexp-grouping-backslash ,constant-face)
          `(font-lock-regexp-grouping-construct ,constant-face)
-         `(font-lock-string-face               ,constant-face)
+         `(font-lock-string-face               ,text-face)
          `(font-lock-type-face                 ,type-face)
          `(font-lock-variable-name-face        ,identifier-face)
          `(font-lock-warning-face              ,error-face)
@@ -199,15 +214,15 @@
          `(spacemacs-replace-face ((t (:inherit spaceline-evil-visual))))
 
          ;; Rainbow-delimiters
-                                        ;`(rainbow-delimiters-depth-1-face ((t (:foreground ,pink))))
-                                        ;`(rainbow-delimiters-depth-2-face ((t (:foreground ,blue))))
-                                        ;`(rainbow-delimiters-depth-3-face ((t (:foreground ,orange))))
-                                        ;`(rainbow-delimiters-depth-4-face ((t (:foreground ,purple))))
-                                        ;`(rainbow-delimiters-depth-5-face ((t (:foreground ,green))))
-                                        ;`(rainbow-delimiters-depth-6-face ((t (:foreground ,cyan))))
-                                        ;`(rainbow-delimiters-depth-7-face ((t (:foreground ,dark-red))))
-                                        ;`(rainbow-delimiters-depth-8-face ((t (:foreground ,dark-yellow))))
-                                        ;`(rainbow-delimiters-depth-9-face ((t (:foreground ,yellow))))
+         ;; `(rainbow-delimiters-depth-1-face ((t (:foreground ,pink))))
+         ;; `(rainbow-delimiters-depth-2-face ((t (:foreground ,blue))))
+         ;; `(rainbow-delimiters-depth-3-face ((t (:foreground ,orange))))
+         ;; `(rainbow-delimiters-depth-4-face ((t (:foreground ,purple))))
+         ;; `(rainbow-delimiters-depth-5-face ((t (:foreground ,green))))
+         ;; `(rainbow-delimiters-depth-6-face ((t (:foreground ,cyan))))
+         ;; `(rainbow-delimiters-depth-7-face ((t (:foreground ,dark-red))))
+         ;; `(rainbow-delimiters-depth-8-face ((t (:foreground ,dark-yellow))))
+         ;; `(rainbow-delimiters-depth-9-face ((t (:foreground ,yellow))))
          `(rainbow-delimiters-depth-1-face ((t (:foreground ,dark-red))))
          `(rainbow-delimiters-depth-2-face ((t (:foreground ,pink))))
          `(rainbow-delimiters-depth-3-face ((t (:foreground ,pink))))
@@ -254,7 +269,7 @@
          `(org-block-begin-line ((t (:foreground ,bg-subtle :background ,bg))))
          `(org-block-end-line ((t (:foreground ,bg-subtle :background ,bg))))
          `(org-kbd ((t (:background ,comment :foreground ,fg
-                                    :box (:line-width 1 :color nil :style pressed-button)))))
+                        :box (:line-width 1 :color nil :style pressed-button)))))
 
          `(org-level-1 ((t (:inherit outline-1 :foreground ,blue))))
          `(org-level-2 ((t (:inherit outline-2 :foreground ,cyan))))
@@ -266,6 +281,14 @@
          `(org-level-8 ((t (:inherit outline-8))))
          `(org-level-9 ((t (:inherit outline-9))))
 
+         ;; org-ref
+         `(org-ref-acronym-face ((t (:foreground ,orange))))
+         `(org-ref-label-face ((t (:foreground ,purple))))
+         `(org-ref-cite-face ((t (:foreground ,green))))
+         `(org-ref-ref-face ((t (:foreground ,red))))
+         `(org-ref-glossary-face ((t (:foreground ,purple))))
+
+         ;; diff
          `(diff-hl-insert ((t (:background ,green :foreground ,green))))
          `(diff-hl-change ((t (:background ,blue :foreground ,blue))))
          `(diff-hl-delete ((t (:background ,orange :foreground ,orange))))
@@ -282,6 +305,14 @@
          `(ediff-even-diff-B ((t (:foreground nil :background nil :inverse-video t))))
          `(ediff-odd-diff-A  ((t (:foreground ,comment :background nil :inverse-video t))))
          `(ediff-odd-diff-B  ((t (:foreground ,comment :background nil :inverse-video t))))
+
+         ;; latex
+         `(font-latex-sectioning-5-face ((t (:foreground ,yellow :weight normal))))
+         `(font-latex-bold-face ((t (:foreground nil :inherit bold))))
+         `(font-latex-italic-face ((t (:foreground nil :inherit italic))))
+         `(font-latex-warning-face ((t (:foreground ,red :inherit bold))))
+         `(font-latex-verbatim-face ((t (:foreground ,orange))))
+         `(font-latex-math-face ((t (:inherit font-latex-verbatim-face))))
 
          ;; Magit
          `(magit-branch ((t (:foreground ,green))))
