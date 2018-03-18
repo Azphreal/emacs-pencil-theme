@@ -28,6 +28,12 @@ If nil, uses the same face as the default."
   :type 'string
   :group 'pencil)
 
+(defcustom pencil/hide-org-block-headers nil
+  "Make the org-mode `#+BEGIN_' and `#+END_' lines the same colour
+as the background."
+  :type 'boolean
+  :group 'pencil)
+
 (defun pencil-apply-theme (name dark?)
   (let ((black           (if pencil/nebula "#23262E" "#212121"))
         (medium-gray     "#767676")
@@ -75,6 +81,8 @@ If nil, uses the same face as the default."
          (red             (if dark? light-red     dark-red     ))
          (bg-region       (if dark? lighter-black light-blue   ))
          (bg-highlight    (if dark? light-black   lighter-gray ))
+         (org-block-fg    (if pencil/hide-org-block-headers bg bg-subtle))
+         (org-block-bg    (if pencil/hide-org-block-headers bg bg-very-subtle))
          (comment         medium-gray))
       (let
           ((comment-face    `((t (:foreground ,comment :slant italic))))
@@ -85,7 +93,9 @@ If nil, uses the same face as the default."
            (type-face       `((t (:foreground ,purple))))
            (special-face    `((t (:foreground ,pink))))
            (error-face      `((t (:foreground ,red :weight bold))))
-           (text-face       `((t (:family ,pencil/variable-family :inherit font-lock-constant-face)))))
+           (text-face       `((t (:family ,pencil/variable-family :inherit font-lock-constant-face))))
+           (org-block-face  `((t (:foreground ,(if pencil/hide-org-block-headers ,bg ,bg-subtle)
+                                  :background ,(if pencil/hide-org-block-headers ,bg ,bg-very-subtle))))))
 
         (custom-theme-set-faces
          name
@@ -244,7 +254,7 @@ If nil, uses the same face as the default."
          `(org-agenda-dimmed-todo-face ((t (:foreground ,comment))))
          `(org-block ((t (:foreground ,fg :background ,bg-very-subtle))))
          `(org-block-background ((t (:background ,bg-very-subtle))))
-         `(org-block-begin-line ((t (:foreground ,bg :background ,bg))))
+         `(org-block-begin-line ,org-block-face)
          `(org-code ((t (:foreground ,red :background ,bg))))
          `(org-verbatim ((t (:foreground ,dark-blue :inherit org-code))))
          `(org-column ((t (:background ,bg-very-subtle))))
@@ -254,6 +264,7 @@ If nil, uses the same face as the default."
          `(org-document-info-keyword ((t (:foreground ,purple :height 1.2))))
          `(org-document-title ((t (:weight bold :foreground ,fg :height 1.2))))
          `(org-done ((t (:weight bold :foreground ,green))))
+         `(org-block-end-line ((t (:inherit org-block-begin-line))))
          `(org-ellipsis ((t (:foreground ,comment))))
          `(org-footnote ((t (:foreground ,blue))))
          `(org-formula ((t (:foreground ,red))))
@@ -268,8 +279,6 @@ If nil, uses the same face as the default."
          `(org-todo ((t (:weight bold :foreground ,red))))
          `(org-upcoming-deadline ((t (:foreground ,orange))))
          `(org-warning ((t (:weight bold :foreground ,red))))
-         `(org-block-begin-line ((t (:foreground ,bg-subtle :background ,bg))))
-         `(org-block-end-line ((t (:inherit org-block-begin-line))))
          `(org-kbd ((t (:background ,comment :foreground ,fg
                         :box (:line-width 1 :color nil :style pressed-button)))))
 
