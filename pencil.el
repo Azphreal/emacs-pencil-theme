@@ -81,8 +81,6 @@ as the background."
          (red             (if dark? light-red     dark-red     ))
          (bg-region       (if dark? lighter-black light-blue   ))
          (bg-highlight    (if dark? light-black   lighter-gray ))
-         (org-block-fg    (if pencil/hide-org-block-headers bg bg-subtle))
-         (org-block-bg    (if pencil/hide-org-block-headers bg bg-very-subtle))
          (comment         medium-gray))
       (let
           ((comment-face    `((t (:foreground ,comment :slant italic))))
