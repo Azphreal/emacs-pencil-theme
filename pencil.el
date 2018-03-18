@@ -92,8 +92,8 @@ as the background."
            (special-face    `((t (:foreground ,pink))))
            (error-face      `((t (:foreground ,red :weight bold))))
            (text-face       `((t (:family ,pencil/variable-family :inherit font-lock-constant-face))))
-           (org-block-face  `((t (:foreground ,(if pencil/hide-org-block-headers ,bg ,bg-subtle)
-                                  :background ,(if pencil/hide-org-block-headers ,bg ,bg-very-subtle))))))
+           (org-block-face  `((t (:foreground ,(if pencil/hide-org-block-headers bg bg-subtle)
+                                  :background ,(if pencil/hide-org-block-headers bg bg-very-subtle))))))
 
         (custom-theme-set-faces
          name
