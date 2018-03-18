@@ -10,7 +10,14 @@ Currently supports:
 - spaceline
 - rust-mode
 - org-mode
+- latex-mode (working progress)
 - diff/ediff
 - magit
 - helm/ivy
 - which-key
+
+# Notes
+Over time, I've customised the theme to be less faithful to the original and more of what I want. However, I've included these as optional features.
+
+- `pencil/nebula`:(boolean)  use a background that's slightly bluer than the default
+- `pencil/variable-family`: (string) if non-nil, use a variable-width typeface for strings and documentation
