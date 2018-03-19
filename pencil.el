@@ -400,6 +400,13 @@ as the background."
          `(which-key-group-description-face ((t (:foreground ,dark-blue ))))
          `(which-key-separator-face ((t (:foreground ,comment ))))
 
+         ;; hydra
+         `(hydra-face-blue ((t :foreground ,blue :weight bold)))
+         `(hydra-face-red ((t :foreground ,dark-red :weight bold)))
+         `(hydra-face-amaranth ((t :foreground ,light-red :weight bold)))
+         `(hydra-face-pink ((t :foreground ,pink :weight bold)))
+         `(hydra-face-teal ((t :foreground ,cyan :weight bold)))
+
          )))))
 
 ;;;###autoload
